@@ -1,6 +1,7 @@
 use std::path::Path;
 
 use bevy::{gltf::Gltf, prelude::*, scene::SceneInstance, utils::hashbrown::HashMap};
+use serde::{Deserialize, Serialize};
 
 use crate::{
     AnimationInfos, AssetLoadTracker, AssetToBlueprintInstancesMapper, BlueprintAnimationInfosLink,
@@ -17,7 +18,7 @@ pub struct GameWorldTag;
 /// Main component for the blueprints
 /// has both name & path of the blueprint to enable injecting the data from the correct blueprint
 /// into the entity that contains this component
-#[derive(Component, Reflect, Default, Debug)]
+#[derive(Component, Reflect, Default, Debug, Serialize, Deserialize, PartialEq)]
 #[reflect(Component)]
 pub struct BlueprintInfo {
     pub name: String,
@@ -35,7 +36,7 @@ impl BlueprintInfo {
 }
 
 /// flag component needed to signify the intent to spawn a Blueprint
-#[derive(Component, Reflect, Default, Debug)]
+#[derive(Component, Reflect, Default, Debug, Serialize, Deserialize, PartialEq)]
 #[reflect(Component)]
 pub struct SpawnBlueprint;
 

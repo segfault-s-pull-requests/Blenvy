@@ -122,9 +122,10 @@ class BLENVY_OT_component_map_actions(Operator):
                 is_enum = getattr(value_setter, "with_enum", False)
                 if not is_enum:
                     for field_name in list(value_setter.field_names):
+                        print(field_name)
                         val = getattr(value_setter, field_name, None)
                         if val is not None:
-                            value[field_name] = val
+                            value[field_name + "asdf"] = val
                 else:
                     selection = getattr(value_setter, "selection", None)
                     setattr(value, 'selection', selection)

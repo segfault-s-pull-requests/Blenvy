@@ -66,6 +66,7 @@ class ComponentsMeta(PropertyGroup):
         bpy.types.Collection.components_meta = PointerProperty(type=ComponentsMeta)
         bpy.types.Mesh.components_meta = PointerProperty(type=ComponentsMeta)
         bpy.types.Material.components_meta = PointerProperty(type=ComponentsMeta)
+        bpy.types.SpotLight.components_meta = PointerProperty(type=ComponentsMeta)
 
     @classmethod
     def unregister(cls):
@@ -73,6 +74,7 @@ class ComponentsMeta(PropertyGroup):
         del bpy.types.Collection.components_meta
         del bpy.types.Mesh.components_meta
         del bpy.types.Material.components_meta
+        del bpy.types.SpotLight.components_meta
 
 # remove no longer valid metadata from item
 def cleanup_invalid_metadata(item):

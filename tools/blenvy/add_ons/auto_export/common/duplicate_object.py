@@ -26,6 +26,8 @@ def copy_animation_data(source, target):
         blender_actions = list(set(blender_actions))
         # sort animations alphabetically (case insensitive) so they have a defined order and match Blender's Action list
         blender_actions.sort(key = lambda a: a.name.lower())
+
+        print("gay", blender_actions, blender_tracks)
         
         markers_per_animation = {}
         animations_infos = []

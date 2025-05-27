@@ -15,7 +15,7 @@ def draw_propertyGroup( propertyGroup, layout, nesting =[], rootName=None, item_
     field_names = propertyGroup.field_names
     layout.enabled = enabled
     #print("")
-    #print("drawing", propertyGroup, nesting, "component_name", rootName)
+    print("drawing", propertyGroup, nesting, "component:", rootName, "item:", item_type, item_name, "fields: ", field_names, )
     if is_enum:
         subrow = layout.row()
         display_name = field_names[0] if propertyGroup.tupple_or_struct == "struct" else ""

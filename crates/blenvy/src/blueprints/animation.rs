@@ -116,13 +116,16 @@ pub fn trigger_blueprint_animation_markers_events(
                     {
                         if let Some(animation_clip) = animation_clips.get(animation_clip_handle) {
                             let animation_length_seconds = animation_clip.duration();
-                            let animation_length_frames =
+                            let Some(animation_info) =
                                 animation_infos // FIXME: horribly inneficient
                                     .animations
                                     .iter()
-                                    .find(|anim| &anim.name == animation_name)
-                                    .unwrap()
-                                    .frames_length;
+                                    .find(|anim| &anim.name == animation_name) else {
+                                        let names : Vec<_> = animation_infos.animations.iter().map(|a|a.name.as_str()).collect();
+                                        error!("missing animation {} from {}\nnames are:{:?}", animation_name, infos_link.0, names );
+                                        continue; 
+                                    };
+                            let animation_length_frames = animation_info.frames_length;
 
                             // TODO: we also need to take playback speed into account
                             let time_in_animation = animation.elapsed()
